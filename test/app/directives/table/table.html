@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+    <div style="margin:7px">
+        <div class="col-xs-6 pull-left form-group">
+            <input type="text" class="form-control" style="border-radius:0px" placeholder="Поиск">
+        </div>
+        <!-- {{data}} -->
+        <div class="col-xs-6 ">
+            <div class="btn-group pull-right">
+                <a class="btn btn-info" ui-sref="dashboard.receiversediting"><span>Добавить</span></a>
+                <a class="btn btn-warning" ui-sref="dashboard.receivers"><span>Вернуться</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body" style="padding:0px">
+        <table class="table table-striped custab">
+            <thead>
+                <tr>
+                    <td ng-repeat="(key, obj) in table">{{obj.title}}</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in data">
+                    <td ng-repeat="col in table">
+                        <!-- {{value}} -->
+                        <div ng-if="col.type !== 'buttons'">
+                            {{row[col.name]}}
+                        </div>
+                        <div ng-if="col.type === 'buttons'">
+                            {{col.state}}
+                            <button class="btn btn-success" ui-sref="dashboard.{{col.state}}({id: row.id})" ng-click="test(row.id)">{{col.button_name}}</button>
+                            <twins-buttons config="col.buttons" id="row.id"></twins-buttons>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

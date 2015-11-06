@@ -1,0 +1,5 @@
+<div class="control-group">
+				{{buttons.sref}}
+        <input ng-repeat="(key, button) in config" type="{{button.type}}" value="{{button.value}}" class="{{button.class}}" ui-sref="{{button.sref}}({id: id})">
+</div>
+

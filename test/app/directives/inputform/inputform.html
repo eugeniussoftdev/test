@@ -1,0 +1,25 @@
+<div class="panel-body">
+    <form class="form-horizontal" name="fff">
+        <fieldset>
+            <!-- Address form -->
+            <legend>Address</legend>
+            <!-- first name input-->
+            <div class="control-group">
+                <div class="col-sm-8" ng-repeat="item in head">
+                    <div ng-repeat="(key, value) in data track by $index" ng-if="key === item.name">
+                        <label class="control-label col-sm-4">{{item.title}}</label>
+                        <div class="col-xs-6">
+                            <input id="address-line1" name="address-line1" type="text" autocomplete="address-line1" placeholder="address line 1" class="form-control" ng-value="value" ng-model="data[key]">
+                            <p class="help-block">поле для редактирования</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <!-- ng-click="test(value)" -->
+                    <input type="submit" value="Сохранить" class="btn btn-info" ui-sref="dashboard.receivers" ng-click="exe(data)">
+                    <input value="Отменить" class="btn btn-warning" ui-sref="dashboard.{{buttons.state}}">
+                </div>
+                <twins-buttons></twins-buttons>
+            </div>
+    </form>
+</div>

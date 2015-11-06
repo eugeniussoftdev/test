@@ -1,0 +1,76 @@
+<div class="container-fluid" style="margin-top:50px">
+    <div class="panel panel-fluid">
+        <div style="margin:7px">
+            <div class="col-xs-6 form-group">
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" style="border-radius:0px" placeholder="Фильтр" ng-model="item">
+                </div>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" style="border-radius:0px" placeholder="Поиск по id услуги" ng-model="item.id">
+                </div>
+            </div>
+            <div class="col-xs-6 pull-right">
+                <div class="btn-group">
+                    <a class="btn btn-default" ui-sref="dashboard.add"><span>Новый получатель</span></a>
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body container-fluid" style="padding:0px">
+            <table class="table table-striped table-bordered" style="margin:0px">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Название</th>
+                        <th>Подключенный драйвер</th>
+                        <th>Услуги</th>
+                        <th style="width:100px">Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="item in dataset | range:pageIndex:4  | filter:item.id | filter:item track by $index"> 
+                    <td class="">{{item.id}}</td>
+                    <td class="">{{item.name}}</td>
+                    <td class="">{{item.driver}}</td>
+                    <td class="center">
+                        <button type="button" class="btn btn-success" ui-sref="">Добавить / редактирова услуги</button>
+                    </td>
+                    <td>
+                   
+                        <button type="button" class="btn btn-sm btn-info" ui-sref="dashboard.edit" ng-click="edit(item)">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>
+                        <button type="button" data-bind="click: $parent.remove" class="remove-news btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" data-original-title="Delete" ng-click="Service.remove(item, $index, dataset)">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                       
+                    </td>
+                    </tr>
+                     
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-footer">
+            <div class="col-xs-3">
+                <div class="dataTables_info" id="example_info">Showing 51 - 60 of 100 total results</div>
+            </div>
+            <div class="col-xs-6">
+               <pagination><pagination>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+                    10 <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" style="min-width: 0px ">
+                    <li><a href="#">5</a></li>
+                    <li class="active"><a href="#">10</a></li>
+                    <li><a href="#">15</a></li>
+                    <li><a href="#">15</a></li>
+                </ul>
+                <span>items per page </span>
+            </div>
+        </div>
+    </div>
+
+
